@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('./node_modules/dotenv').config() 
 
 async function fetchGrassImage() {
     const clientId = process.env.UNSPLASH_CLIENT_ID;
