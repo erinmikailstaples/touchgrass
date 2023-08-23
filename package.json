@@ -1,0 +1,16 @@
+
+{
+  "name": "touchgrass",
+  "version": "1.0.0",
+  "description": "Have you tried touching grass lately?",
+  "main": "main.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
