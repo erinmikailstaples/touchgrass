@@ -1,22 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
+  const [image, setImage] = useState("");
+
+  useEffect(() => {
+    fetch("https://api.unsplash.com/photos/random?query=grass", {
+      headers: {
+        Authorization: `Client-ID ${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setImage(data.urls.small);
+      })
+      .catch((error) => {
+        console.error("Error fetching image:", error);
+      });
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {image && <img src={image} alt="grass" />}
       </header>
     </div>
   );
